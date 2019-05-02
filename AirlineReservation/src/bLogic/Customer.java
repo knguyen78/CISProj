@@ -2,7 +2,6 @@ package bLogic;
 
 public class Customer {
 	
-	String lame;
 	private String firstName;
 	private String lastName;
 	private String address;
