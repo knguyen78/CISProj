@@ -25,26 +25,16 @@ public class MainController implements Initializable{
 
     @FXML
     private Button register_btn;
+    @FXML
+    private Scene oldScene;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		changeScene("Login.fxml");
+		
 	}
 	
-public void changeScene(String scenePath){
-        
-        FXMLLoader loader;
-        loader = new FXMLLoader(getClass().getResource(scenePath));
-        AnchorPane pane = new AnchorPane();
-       // Stage window = (Stage)((Node)event.getSource()).getWindow();
-    try{
-            pane = (AnchorPane) loader.load();
-            rootLayout.setCenter(pane);
-        }
-        catch(Exception e){
-        }
-    }
+
 
 	@FXML
 	void setLoginScene(ActionEvent event) {
@@ -57,6 +47,27 @@ public void changeScene(String scenePath){
 			loader = FXMLLoader.load(getClass().getResource("Login.fxml"));
 			newScene = new Scene(loader);
 			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	        window.setScene(newScene);
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        
+        
+	}
+	
+	@FXML
+	void setRegistrationScene(ActionEvent event) {
+		//changeScene("Login.fxml");
+		System.out.println("Register button pressed");
+		Parent loader;
+		Scene newScene;
+		
+        try {
+			loader = FXMLLoader.load(getClass().getResource("Register.fxml"));
+			newScene = new Scene(loader);
+			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 	        
 	        window.setScene(newScene);
         } catch (IOException e) {
@@ -66,6 +77,22 @@ public void changeScene(String scenePath){
         
         
         
+	}
+	@FXML
+	void setMainMenu(ActionEvent event) {
+		Parent loader;
+		Scene newScene;
+		
+        try {
+			loader = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+			newScene = new Scene(loader);
+			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	        
+	        window.setScene(newScene);
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
