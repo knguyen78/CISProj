@@ -11,40 +11,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class RegisterController {
-	@FXML
-	private TextField fname;
+public class LoginController {
+    @FXML
+    private TextField usern_field;
 
-	@FXML
-	private TextField lname;
+    @FXML
+    private PasswordField passw_field;
 
-	@FXML
-	private TextField street;
-
-	@FXML
-	private TextField zip;
-
-	@FXML
-	private ChoiceBox<?> state;
-
-	@FXML
-	private TextField email;
-
-	@FXML
-	private TextField ssn;
-
-	@FXML
-	private TextField usern;
-
-	@FXML
-	private PasswordField passw;
-
-	@FXML
-	private TextField secQuestion;
-
-	@FXML
-	private TextField secAnswer;
-	
+    @FXML
+    private Button signIn_btn;
 	
 	@FXML
     private Button mainMenu_btn;
@@ -64,6 +39,13 @@ public class RegisterController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	@FXML
+	void getLoginInfo(ActionEvent event) {
+		String un = usern_field.getText();
+		String pw = passw_field.getText();
+		
+		System.out.println(un+"\n"+pw);
 	}
 
 }

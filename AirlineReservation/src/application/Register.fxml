@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -9,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterController">
    <children>
       <VBox alignment="CENTER" prefHeight="422.0" prefWidth="544.0">
          <children>
@@ -107,6 +107,15 @@
                      </HBox.margin>
                   </Text>
                   <TextField fx:id="secAnswer" prefHeight="25.0" prefWidth="383.0" text="Answer" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Register" />
+                  <Button fx:id="mainMenu_btn" mnemonicParsing="false" onAction="#setMainMenu" text="Back to Main Menu" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
