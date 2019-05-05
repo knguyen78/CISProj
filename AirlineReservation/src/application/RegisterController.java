@@ -10,6 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import application.DisplayDB;
+import application.DBConnect;
+import application.Delete;
+import bLogic.Customer;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class RegisterController {
 	@FXML
@@ -25,7 +31,7 @@ public class RegisterController {
 	private TextField zip;
 
 	@FXML
-	private ChoiceBox<?> state;
+	private TextField state;
 
 	@FXML
 	private TextField email;
@@ -50,6 +56,22 @@ public class RegisterController {
     private Button mainMenu_btn;
 	
 	@FXML
+	private Button register_btn;
+	
+	
+	String firName = "";
+	String lastName = "";
+	String str = "";
+	String zipcode = "";
+	String sta = "";
+	String emi = "";
+	String social = "";
+	String user = "";
+	String pass = "";
+	String securityQ = "";
+	String securityA = "";
+	
+	@FXML
 	void setMainMenu(ActionEvent event) {
 		Parent loader;
 		Scene newScene;
@@ -65,5 +87,48 @@ public class RegisterController {
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+	private void register_btn(ActionEvent event) {
+		
+		try {
+			
+			getRegisterFields();
+			Connection c;
+			c = (Connection) DBConnect.connect();
+			String query = "INSERT INTO Database.Customer (firstName, lastName, address, zip, state, email, "
+							+ "ssn, username, password, securityQuestion, securityAnswer)VALUES("+ "'" + firName + "'," +
+							"'" + lastName + "'," + "'" + str + "'," + "'" + zipcode + "'," +
+							"'" + sta + "'," + "'" + emi + "'," + "'" + social + "'," + "'" + user + "'," +
+							"'" + pass + "'," + "'" + securityQ + "'," + "'" + securityA + "',);"; 
+					
+			
+			c.createStatement().execute(query);
+			c.close();
+			
+		}
+		catch (SQLException e){
+			System.out.println("Error with register button");
+		}
+		
+	}
+	
+	private void getRegisterFields() {
+		
+		firName = fname.getText();
+		lastName = lname.getText();
+		str = street.getText();
+		zipcode = zip.getText();
+		sta = state.getText();
+		emi = email.getText();
+		social = ssn.getText();
+		user = usern.getText();
+		pass = passw.getText();
+		securityQ = secQuestion.getText();
+		securityA = secAnswer.getText();
+		
+		
+	}
+	
 
 }
