@@ -32,6 +32,9 @@ public class RegisterController {
 
 	@FXML
 	private TextField state;
+	
+	@FXML
+    private TextField city;
 
 	@FXML
 	private TextField email;
@@ -62,6 +65,7 @@ public class RegisterController {
 	String lastName = "";
 	String str = "";
 	String zipcode = "";
+	String ci;
 	String sta = "";
 	String emi = "";
 	String social = "";
@@ -91,24 +95,28 @@ public class RegisterController {
 	@FXML
 	private void regi_btn(ActionEvent event) {
 		
+		System.out.println("regi_btn clicked");
+		
 		try {
 			
 			getRegisterFields();
 			Connection c;
 			c = (Connection) DBConnect.connect();
-			String query = "INSERT INTO Database.registration (firstName, lastName, street, zip, state, email, "
-							+ "ssn, username, password, securityQuestion, securityAnswer)VALUES("+ "'" + firName + "'," +
-							"'" + lastName + "'," + "'" + str + "'," + "'" + zipcode + "'," +
+			String query = "INSERT INTO AirwaysData.registration (firstName, lastName, city, address, zip, state, email, "
+							+ "ssn, username, pword, securityQuestion, securityAnswer, isAdmin)VALUES("+ "'" + firName + "'," +
+							"'" + lastName + "'," + "'" + ci + "'," +"'" + str + "'," + "'" + zipcode + "'," +
 							"'" + sta + "'," + "'" + emi + "'," + "'" + social + "'," + "'" + user + "'," +
-							"'" + pass + "'," + "'" + securityQ + "'," + "'" + securityA + "',);"; 
+							"'" + pass + "'," + "'" + securityQ + "'," + "'" + securityA + "',0);"; 
 					
-			
+			System.out.println(query);
 			c.createStatement().execute(query);
+			System.out.println("Successful query");
 			c.close();
 			
 		}
 		catch (SQLException e){
 			System.out.println("Error with register button");
+			System.out.println(e);
 		}
 		
 	}
@@ -120,6 +128,7 @@ public class RegisterController {
 		str = street.getText();
 		zipcode = zip.getText();
 		sta = state.getText();
+		ci = city.getText();
 		emi = email.getText();
 		social = ssn.getText();
 		user = usern.getText();
