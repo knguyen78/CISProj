@@ -51,12 +51,11 @@ public class RegisterController {
 	@FXML
 	private TextField secAnswer;
 	
-	
 	@FXML
     private Button mainMenu_btn;
 	
 	@FXML
-	private Button register_btn;
+	private Button regi_btn;
 	
 	
 	String firName = "";
@@ -89,14 +88,14 @@ public class RegisterController {
 	}
 	
 	@FXML
-	private void register_btn(ActionEvent event) {
+	private void regi_btn(ActionEvent event) {
 		
 		try {
 			
 			getRegisterFields();
 			Connection c;
 			c = (Connection) DBConnect.connect();
-			String query = "INSERT INTO Database.Customer (firstName, lastName, address, zip, state, email, "
+			String query = "INSERT INTO Database.registration (firstName, lastName, address, zip, state, email, "
 							+ "ssn, username, password, securityQuestion, securityAnswer)VALUES("+ "'" + firName + "'," +
 							"'" + lastName + "'," + "'" + str + "'," + "'" + zipcode + "'," +
 							"'" + sta + "'," + "'" + emi + "'," + "'" + social + "'," + "'" + user + "'," +
@@ -125,10 +124,7 @@ public class RegisterController {
 		user = usern.getText();
 		pass = passw.getText();
 		securityQ = secQuestion.getText();
-		securityA = secAnswer.getText();
-		
+		securityA = secAnswer.getText();		
 		
 	}
-	
-
 }
