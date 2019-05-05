@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -38,7 +37,7 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="50.0" />
                   <TextField fx:id="city" text="City" />
-                  <ChoiceBox fx:id="state" prefHeight="27.0" prefWidth="39.0" />
+                  <TextField fx:id="state" prefHeight="27.0" prefWidth="64.0" text="State" />
                   <TextField fx:id="zip" text="Zip Code" />
                </children>
                <VBox.margin>
