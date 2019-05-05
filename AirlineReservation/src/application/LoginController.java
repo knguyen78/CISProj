@@ -46,6 +46,27 @@ public class LoginController {
 		String pw = passw_field.getText();
 		
 		System.out.println(un+"\n"+pw);
+		
+		setAccountView(event);
 	}
+	
+	
+	void setAccountView(ActionEvent event) {
+		Parent loader;
+		Scene newScene;
+		
+        try {
+			loader = FXMLLoader.load(getClass().getResource("AccountInfo.fxml"));
+			newScene = new Scene(loader);
+			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	        
+	        window.setScene(newScene);
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 
 }
