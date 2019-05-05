@@ -27,8 +27,8 @@
             </HBox>
             <HBox spacing="10.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address: " />
-                  <TextField fx:id="street" prefHeight="25.0" prefWidth="313.0" text="Street" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address: " wrappingWidth="57.24609375" />
+                  <TextField fx:id="street" prefHeight="27.0" prefWidth="384.0" text="Street" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -37,8 +37,9 @@
             <HBox spacing="10.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="50.0" />
+                  <TextField fx:id="city" text="City" />
+                  <ChoiceBox fx:id="state" prefHeight="27.0" prefWidth="39.0" />
                   <TextField fx:id="zip" text="Zip Code" />
-                  <ChoiceBox fx:id="state" prefWidth="150.0" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
