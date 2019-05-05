@@ -4,6 +4,7 @@ create table if not exists registration (
 customerID INT Auto_Increment Not Null,
 firstname varchar(50) Not Null,
 lastname varchar(50) Not Null,
+city varchar (50) Not Null,
 address varchar(50) Not Null,
 zip numeric(5) Not Null,
 state varchar(2) Not Null,
@@ -62,14 +63,14 @@ Values
 ('Paris', 'New York','8:30:00','11:30:00', 1),
 ('Atlanta', 'Los Angelos','8:30:00','11:30:00', 1);
 
-Insert into registration(firstname, lastname, address, zip, state, username, pword, 
+Insert into registration(firstname, lastname,city, address, zip, state, username, pword, 
 email, SSN, securityQuestion, securityAnswer, isAdmin)
 Values
-('Charles', 'Money', '141 Piedmont AV', '30080','GA','cmoney',
+('Charles', 'Money','Atlanta' '141 Piedmont AV', '30080','GA','cmoney',
 'password','cmoney3@student.gsu.edu',111111111,'What is the Answer', '42',true),
 
-('Nolan', 'Bullard', '141 Piedmont AV', '30080','GA','nbullard',
+('Nolan', 'Bullard','Atlanta', '141 Piedmont AV', '30080','GA','nbullard',
 'password','nolanbullard@gmail.com',222222222,'What is the Answer', '42',true),
 
-('Kat', 'Nguyen', '141 Piedmont AV', '30080','GA','knguyen',
+('Kat', 'Nguyen','Atlanta' '141 Piedmont AV', '30080','GA','knguyen',
 'password','kathy0nguyen@gmail.com',333333333,'What is the Answer', '42',true);
