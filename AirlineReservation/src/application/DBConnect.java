@@ -2,7 +2,6 @@ package application;
 
 import java.sql.*;
 
-import application.Connection;
 
 public class DBConnect {
 	
@@ -12,7 +11,7 @@ private static Connection con;
 		
 		try {
 			
-			 Class.forName("com.mysql.jdbc.Driver").newInstance();
+			 Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 		}	
 			catch(ClassNotFoundException cnfe) {  
 				System.err.println("Error: "+cnfe.getMessage());
@@ -24,8 +23,11 @@ private static Connection con;
 	    	 	System.err.println("Error: "+iae.getMessage());  
 	     }
 		
-		 con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Database");
-		 return con;
+		 con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/AirwaysData?serverTimezone=UTC");
+		
+		
+		
+		return con;
 		
 		}
 		
