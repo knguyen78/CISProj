@@ -95,7 +95,7 @@ public class RegisterController {
 			getRegisterFields();
 			Connection c;
 			c = (Connection) DBConnect.connect();
-			String query = "INSERT INTO Database.registration (firstName, lastName, address, zip, state, email, "
+			String query = "INSERT INTO Database.registration (firstName, lastName, street, zip, state, email, "
 							+ "ssn, username, password, securityQuestion, securityAnswer)VALUES("+ "'" + firName + "'," +
 							"'" + lastName + "'," + "'" + str + "'," + "'" + zipcode + "'," +
 							"'" + sta + "'," + "'" + emi + "'," + "'" + social + "'," + "'" + user + "'," +
