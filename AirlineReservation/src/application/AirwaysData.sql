@@ -1,5 +1,5 @@
-Create Database If not exists Airways;
-use test;
+Create Database If not exists AirwaysData;
+use AirwaysData;
 create table if not exists registration (
 customerID INT Auto_Increment Not Null,
 firstname varchar(50) Not Null,
