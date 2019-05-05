@@ -1,4 +1,4 @@
-Create Database If not exists test;
+Create Database If not exists Airways;
 use test;
 create table if not exists registration (
 customerID INT Auto_Increment Not Null,
