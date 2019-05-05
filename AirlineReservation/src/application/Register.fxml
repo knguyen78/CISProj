@@ -17,8 +17,8 @@
             <HBox spacing="10.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="47.294921875" />
-                  <TextField fx:id="fname" prefWidth="142.0" text="First Name" />
-                  <TextField fx:id="lname" text="Last Name" />
+                  <TextField fx:id="fname" prefWidth="142.0" promptText="First Name" />
+                  <TextField fx:id="lname" promptText="Last Name" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -27,7 +27,7 @@
             <HBox spacing="10.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address: " wrappingWidth="57.24609375" />
-                  <TextField fx:id="street" prefHeight="27.0" prefWidth="384.0" text="Street" />
+                  <TextField fx:id="street" prefHeight="27.0" prefWidth="384.0" promptText="Street" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -36,9 +36,9 @@
             <HBox spacing="10.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="50.0" />
-                  <TextField fx:id="city" text="City" />
-                  <TextField fx:id="state" prefHeight="27.0" prefWidth="64.0" text="State" />
-                  <TextField fx:id="zip" text="Zip Code" />
+                  <TextField fx:id="city" promptText="City" />
+                  <TextField fx:id="state" prefHeight="27.0" prefWidth="64.0" promptText="State" />
+                  <TextField fx:id="zip" promptText="Zip Code" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -47,7 +47,7 @@
             <HBox layoutX="15.0" layoutY="244.0" spacing="10.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email: " wrappingWidth="50.0" />
-                  <TextField fx:id="email" prefHeight="25.0" prefWidth="226.0" text="Email Address" />
+                  <TextField fx:id="email" prefHeight="25.0" prefWidth="226.0" promptText="Email Address" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -56,7 +56,7 @@
             <HBox layoutX="15.0" layoutY="261.0" spacing="10.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SSN" wrappingWidth="50.0" />
-                  <TextField fx:id="ssn" prefHeight="25.0" prefWidth="226.0" text="Social Security Number" />
+                  <TextField fx:id="ssn" prefHeight="25.0" prefWidth="226.0" promptText="Social Security Number" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -70,7 +70,7 @@
                         <Insets />
                      </HBox.margin>
                   </Text>
-                  <TextField fx:id="usern" prefHeight="25.0" prefWidth="196.0" text="Username" />
+                  <TextField fx:id="usern" prefHeight="25.0" prefWidth="196.0" promptText="Username" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -79,7 +79,7 @@
             <HBox layoutX="10.0" layoutY="313.0" spacing="10.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="80.0" />
-                  <PasswordField fx:id="passw" prefHeight="25.0" prefWidth="226.0" />
+                  <PasswordField fx:id="passw" prefHeight="25.0" prefWidth="226.0" promptText="Password" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="*password must be at least 4 characters long" />
                </children>
                <VBox.margin>
@@ -93,7 +93,7 @@
                         <Insets />
                      </HBox.margin>
                   </Text>
-                  <TextField fx:id="secQuestion" prefHeight="25.0" prefWidth="381.0" text="Question" />
+                  <TextField fx:id="secQuestion" prefHeight="25.0" prefWidth="381.0" promptText="Type in your question" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -106,7 +106,7 @@
                         <Insets />
                      </HBox.margin>
                   </Text>
-                  <TextField fx:id="secAnswer" prefHeight="25.0" prefWidth="383.0" text="Answer" />
+                  <TextField fx:id="secAnswer" prefHeight="25.0" prefWidth="383.0" promptText="Type in your answer" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -114,7 +114,7 @@
             </HBox>
             <HBox alignment="TOP_RIGHT" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" text="Register" />
+                  <Button fx:id="regi_btn" mnemonicParsing="false" onAction="#regi_btn" text="Register" />
                   <Button fx:id="mainMenu_btn" mnemonicParsing="false" onAction="#setMainMenu" text="Back to Main Menu" />
                </children>
                <VBox.margin>
