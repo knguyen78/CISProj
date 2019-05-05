@@ -40,25 +40,25 @@ FlightID Int Not Null
 Insert into Flight(departureCity, arrivalCity, departureTime, arrivalTime, airplaneid)
 Values
 ('Atlanta', 'Los Angelos','11:30:00','15:00:00', 1),
-('New York', 'London','11:30:00','15:30:00', 1),
+('New York', 'London','10:30:00','14:30:00', 1),
 ('London', 'Atlanta','11:30:00','15:30:00', 1),
 ('Boston', 'San Fransisco','11:30:00','15:30:00', 1),
 ('Denver', 'Seattle','11:30:00','15:30:00', 1),
 ('Paris', 'London','11:30:00','15:30:00', 1),
 ('Seattle', 'Boston','11:30:00','15:30:00', 1),
 ('San Fransisco', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1),
-('Atlanta', 'Los Angelos','11:30:00','15:30:00', 1);
+('Atlanta', 'New York','8:30:00','11:30:00', 1),
+('Atlanta', 'London','8:30:00','12:30:00', 1),
+('San Fransisco', 'Sydney','10:30:00','13:30:00', 1),
+('Denver', 'Los Angelos','11:30:00','15:30:00', 1),
+('Paris', 'Los Angelos','8:30:00','11:30:00', 1),
+('Los Angelos', 'Atlanata','11:30:00','15:30:00', 1),
+('New York', 'Los Angelos','15:30:00','18:30:00', 1),
+('Bejing', 'Tokyo','11:30:00','15:30:00', 1),
+('Tokyo', 'San Fransisco','15:30:00','18:30:00', 1),
+('London', 'New York','11:30:00','15:30:00', 1),
+('Paris', 'New York','8:30:00','11:30:00', 1),
+('Atlanta', 'Los Angelos','8:30:00','11:30:00', 1);
 
 Insert into registration(firstname, lastname, address, zip, state, username, pword, 
 email, SSN, securityQuestion, securityAnswer, isAdmin)
@@ -71,8 +71,3 @@ Values
 
 ('Kat', 'Nguyen', '141 Piedmont AV', '30080','GA','knguyen',
 'password','kathy0nguyen@gmail.com',333333333,'What is the Answer', '42',true);
-
-
-
-Select * 
-From Flight;
