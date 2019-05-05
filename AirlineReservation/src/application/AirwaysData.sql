@@ -66,11 +66,11 @@ Values
 Insert into registration(firstname, lastname,city, address, zip, state, username, pword, 
 email, SSN, securityQuestion, securityAnswer, isAdmin)
 Values
-('Charles', 'Money','Atlanta' '141 Piedmont AV', '30080','GA','cmoney',
+('Charles', 'Money','Atlanta', '141 Piedmont AV', '30080','GA','cmoney',
 'password','cmoney3@student.gsu.edu',111111111,'What is the Answer', '42',true),
 
 ('Nolan', 'Bullard','Atlanta', '141 Piedmont AV', '30080','GA','nbullard',
 'password','nolanbullard@gmail.com',222222222,'What is the Answer', '42',true),
 
-('Kat', 'Nguyen','Atlanta' '141 Piedmont AV', '30080','GA','knguyen',
+('Kat', 'Nguyen','Atlanta', '141 Piedmont AV', '30080','GA','knguyen',
 'password','kathy0nguyen@gmail.com',333333333,'What is the Answer', '42',true);
