@@ -70,6 +70,7 @@ public class RegisterController {
 	String securityQ = "";
 	String securityA = "";
 	
+	
 	@FXML
 	void setMainMenu(ActionEvent event) {
 		Parent loader;
