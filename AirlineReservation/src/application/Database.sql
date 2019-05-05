@@ -1,4 +1,6 @@
-create table registration(
+Create Database If not exists test;
+use test;
+create table if not exists registration (
 customerID INT Auto_Increment Not Null,
 firstname varchar(50) Not Null,
 lastname varchar(50) Not Null,
@@ -14,7 +16,7 @@ securityAnswer varchar(100) Not Null,
 isAdmin boolean Not Null,
 primary key (customerID)
 );
-create table Flight(
+create table if not exists Flight(
 flightID Int Auto_Increment,
 departureCity varchar (50) Not Null,
 arrivalCity varchar (50) Not Null,
@@ -24,13 +26,13 @@ airplaneid numeric (4) Not Null,
 primary key (flightID)
 );
 
-create table airplane(
+create table if not exists airplane(
 airplaneID Int Auto_Increment Not Null,
 maxCapacity numeric (3) Not Null,
 currentCapacity numeric (3) Not Null,
 primary key (airplaneID)
 );
-create table bookCheck(
+create table if not exists bookCheck(
 BookedID Int Not Null,
 CustomerID Int Not Null,
 FlightID Int Not Null
