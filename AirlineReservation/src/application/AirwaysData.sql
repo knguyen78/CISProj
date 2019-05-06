@@ -76,4 +76,6 @@ Values
 'password','nolanbullard@gmail.com',222222222,'What is the Answer', '42',true),
 
 ('Kat', 'Nguyen','Atlanta', '141 Piedmont AV', '30080','GA','knguyen',
-'password','kathy0nguyen@gmail.com',333333333,'What is the Answer', '42',true);
+'password','kathy0nguyen@gmail.com',333333333,'What is the Answer', '42',true),
+('Charles', 'Money','Atlanta', '141 Piedmont AV', '30080','GA','dummy',
+'yummy','cmoney3@student.gsu.edu',111111111,'What is the Answer', '42',false);

@@ -41,6 +41,9 @@ public class AccountController implements Initializable {
 	@FXML
     private Button mainMenu_btn;
 	
+    @FXML
+    private Button book;
+	
 	@FXML
     private TableView<?> upcomingTable;
 
@@ -63,6 +66,24 @@ public class AccountController implements Initializable {
 	        
 	        window.setScene(newScene);
         } catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	void setSearchScene(ActionEvent event) {
+		//allows user to view flights
+		Parent loader;
+		Scene newScene;
+		System.out.println("Book button pressed");
+		
+        try {
+			loader = FXMLLoader.load(getClass().getResource("Search.fxml"));
+			newScene = new Scene(loader);
+			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	        
+	        window.setScene(newScene);
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

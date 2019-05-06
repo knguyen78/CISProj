@@ -64,7 +64,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="164.0" text="Log Out and Exit" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.0" />
-                  <Button mnemonicParsing="false" text="Book a Flight" />
+                  <Button mnemonicParsing="false" onAction="#setSearchScene" text="Book a Flight" />
                   <Button fx:id="mainMenu_btn" mnemonicParsing="false" onAction="#setMainMenu" text="Back to Main Menu" />
                </children>
                <padding>
