@@ -64,7 +64,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="164.0" text="Log Out and Exit" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="81.0" />
-                  <Button layoutX="390.0" layoutY="28.0" mnemonicParsing="false" text="Edit Flights" />
+                  <Button fx:id="editFlights_btn" layoutX="390.0" layoutY="28.0" mnemonicParsing="false" onAction="#setEditFlightScene" text="Edit Flights" />
                   <Button mnemonicParsing="false" text="Search Flights" />
                   <Button fx:id="mainMenu_btn" mnemonicParsing="false" onAction="#setMainMenu" text="Back to Main Menu" />
                </children>

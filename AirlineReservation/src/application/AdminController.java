@@ -41,6 +41,9 @@ public class AdminController implements Initializable {
 	@FXML
     private Button mainMenu_btn;
 	
+    @FXML
+    private Button editFlights_btn;
+	
 	@FXML
     private TableView<?> upcomingTable;
 
@@ -64,6 +67,24 @@ public class AdminController implements Initializable {
 		
         try {
 			loader = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+			newScene = new Scene(loader);
+			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	        
+	        window.setScene(newScene);
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	void setEditFlightScene(ActionEvent event) {
+		Parent loader;
+		Scene newScene;
+		System.out.println("Edit Flights button pressed");
+		
+        try {
+			loader = FXMLLoader.load(getClass().getResource("EditFlights.fxml"));
 			newScene = new Scene(loader);
 			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 	        
