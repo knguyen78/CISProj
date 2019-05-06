@@ -113,6 +113,8 @@ public class RegisterController {
 			System.out.println("Successful query");
 			c.close();
 			
+			setMainMenu(event);
+			
 		}
 		catch (SQLException e){
 			System.out.println("Error with register button");
