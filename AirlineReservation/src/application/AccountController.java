@@ -77,7 +77,7 @@ public class AccountController implements Initializable {
 		System.out.println("Book button pressed");
 		
         try {
-			loader = FXMLLoader.load(getClass().getResource("Search.fxml"));
+			loader = FXMLLoader.load(getClass().getResource("Searcher.fxml"));
 			newScene = new Scene(loader);
 			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 	        

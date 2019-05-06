@@ -23,7 +23,7 @@ private static Connection con;
 	    	 	System.err.println("Error: "+iae.getMessage());  
 	     }
 		
-		 con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/AirwaysData?serverTimezone=UTC");
+		 con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/AirwaysData?serverTimezone=UTC","root","password");
 		
 		
 		

@@ -2,11 +2,9 @@ package application;
 
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Time;
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
 import bLogic.Flight;
 import javafx.collections.FXCollections;
@@ -14,75 +12,98 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
 
-public class SearchController {
+public class SearchController implements Initializable{
+
+	@FXML
+    private TextField Keyword;
 
     @FXML
-    private VBox Search;
+    private Button DepCityB;
 
     @FXML
-    private Text SearchPar;
+    private Button ACityB;
 
     @FXML
-    private TextField Paramater;
+    private Button DepTimeB;
 
     @FXML
-    private Text SearchCat;
-
-    @FXML
-    private Button DepCity;
-
-    @FXML
-    private Button ArCity;
-
-    @FXML
-    private Button DepTime;
-    @FXML
-    private Button ArrTime;
+    private Button ATimeB;
 
     @FXML
     private TableView<Flight> Table;
+    
+    @FXML
+    private TableColumn<Flight, String> FID;
 
     @FXML
-    private TableColumn<Flight, String> FlightID;
+    private TableColumn<Flight, String> DepCityC;
 
     @FXML
-    private TableColumn<Flight, String> DCity;
+    private TableColumn<Flight, String> ACityC;
 
     @FXML
-    private TableColumn<Flight, String> ACity;
+    private TableColumn<Flight, Time> DepTimeC;
 
     @FXML
-    private TableColumn<Flight, Time> Dtime;
+    private TableColumn<Flight, Time> ATimeC;
 
     @FXML
-    private TableColumn<Flight, Time> Atime;
+    private Button Book;
 
     @FXML
-    private Button back;
-
-    @FXML
-    private Button log;
+    private Button MainMenu;
 
     ObservableList<Flight> flightList = FXCollections.observableArrayList();
     
     String par = "*";
     
+    public void initialize(URL arg0, ResourceBundle arg1) {
+		// shows initial flights
+		
+		try {
+			Connection c = DBConnect.connect();
+			
+			ResultSet rs = c.createStatement().executeQuery("SELECT * from AirwaysData.flight");
+			
+			while (rs.next()) {
+				flightList.add(new Flight(rs.getInt("flightID"), 
+						rs.getString("departureCity"), rs.getString("arrivalCity"), 
+						rs.getTime("departureTime"), rs.getTime("arrivalTime")));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+
+		FID.setCellValueFactory(new PropertyValueFactory<>("id"));
+		DepCityC.setCellValueFactory(new PropertyValueFactory<>("depCity"));
+		ACityC.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
+		DepTimeC.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+		ATimeC.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
+		
+		Table.setItems(flightList);
+		
+		
+		
+		
+	}
+    
     void setMainMenu(ActionEvent event) {
-		Parent loader;
+		//returns to main menu
+    	Parent loader;
 		Scene newScene;
 		
         try {
@@ -95,16 +116,14 @@ public class SearchController {
 			e.printStackTrace();
 		}
 	}
-    @FXML void getParamater(ActionEvent event) {
-    	par = Paramater.getText();
-    }
-    @FXML void dTime(ActionEvent event) {
-    	String where = "departureTime";
+    @FXML void aTime(ActionEvent event) {
+    	//narrows results by inputed time
+    	String where = Keyword.getText();
     	Table.getItems().clear();
     	Connection c;
 		try {
 			c = (Connection) DBConnect.connect();
-			String query = "SELECT * from AirwaysData.Flights WHERE " + where + " = '" + par + "'";
+			String query = "SELECT * from AirwaysData.Flights WHERE arrivalTime Like '" + where + "%'";
 			Statement st = c.createStatement();
 			
 			ResultSet rs = st.executeQuery(query);
@@ -118,18 +137,49 @@ public class SearchController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		FlightID.setCellValueFactory(new PropertyValueFactory<>("id"));
-		DCity.setCellValueFactory(new PropertyValueFactory<>("depCity"));
-		ACity.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
-		Dtime.setCellValueFactory(new PropertyValueFactory<>("depTime"));
-		Atime.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
+		FID.setCellValueFactory(new PropertyValueFactory<>("id"));
+		DepCityC.setCellValueFactory(new PropertyValueFactory<>("depCity"));
+		ACityC.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
+		DepTimeC.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+		ATimeC.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
+		Table.setItems(flightList);
     }
-    @FXML void dCity(ActionEvent event) {
-    	String where = "departureCity";
+    @FXML void dTime(ActionEvent event) {
+    	//narrows results by inputed time
+    	String where = Keyword.getText();
+    	Table.getItems().clear();
     	Connection c;
 		try {
 			c = (Connection) DBConnect.connect();
-			String query = "SELECT * from AirwaysData.Flights WHERE " + where + " = '" + par + "'";
+			String query = "SELECT * from AirwaysData.Flights WHERE departureTime Like '" + where + "%'";
+			Statement st = c.createStatement();
+			
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				flightList.add(new Flight(rs.getInt("flightID"), 
+						rs.getString("departureCity"), rs.getString("arrivalCity"), 
+						rs.getTime("departureTime"), rs.getTime("arrivalTime")));
+			}
+			}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FID.setCellValueFactory(new PropertyValueFactory<>("id"));
+		DepCityC.setCellValueFactory(new PropertyValueFactory<>("depCity"));
+		ACityC.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
+		DepTimeC.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+		ATimeC.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
+		Table.setItems(flightList);
+    }
+    @FXML void dCity(ActionEvent event) {
+    	// narrows results by inputed city
+    	String where = Keyword.getText();
+    	Table.getItems().clear();
+    	Connection c;
+		try {
+			c = (Connection) DBConnect.connect();
+			String query = "SELECT * from AirwaysData.flight WHERE departureCity LIKE '"+ where+"%'";
 			Statement st = c.createStatement();
 			
 			ResultSet rs = st.executeQuery(query);
@@ -142,21 +192,23 @@ public class SearchController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		FlightID.setCellValueFactory(new PropertyValueFactory<>("id"));
-		DCity.setCellValueFactory(new PropertyValueFactory<>("depCity"));
-		ACity.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
-		Dtime.setCellValueFactory(new PropertyValueFactory<>("depTime"));
-		Atime.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
-		
+		FID.setCellValueFactory(new PropertyValueFactory<>("id"));
+		DepCityC.setCellValueFactory(new PropertyValueFactory<>("depCity"));
+		ACityC.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
+		DepTimeC.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+		ATimeC.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
 		Table.setItems(flightList);
+		
     }
 		
     @FXML void aCity(ActionEvent event) {
-    	String where = "arrivalCity";
+    	//narrows results by inputed city
+    	String where = Keyword.getText();
+    	Table.getItems().clear();
     	Connection c;
 		try {
 			c = (Connection) DBConnect.connect();
-			String query = "SELECT * from AirwaysData.Flights WHERE " + where + " = '" + par + "'";
+			String query = "SELECT * from AirwaysData.flight WHERE arrivalCity LIKE '" + where + "%'";
 			Statement st = c.createStatement();
 			
 			ResultSet rs = st.executeQuery(query);
@@ -170,12 +222,28 @@ public class SearchController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			FlightID.setCellValueFactory(new PropertyValueFactory<>("id"));
-			DCity.setCellValueFactory(new PropertyValueFactory<>("depCity"));
-			ACity.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
-			Dtime.setCellValueFactory(new PropertyValueFactory<>("depTime"));
-			Atime.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
-			
-			Table.setItems(flightList);
+		FID.setCellValueFactory(new PropertyValueFactory<>("id"));
+		DepCityC.setCellValueFactory(new PropertyValueFactory<>("depCity"));
+		ACityC.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
+		DepTimeC.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+		ATimeC.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
+		Table.setItems(flightList);
     }
+    @FXML void book(ActionEvent event) {
+    	//allows user to book a flight
+    	Parent loader;
+		Scene newScene;
+		System.out.println("Book button pressed");
+		
+        try {
+			loader = FXMLLoader.load(getClass().getResource("Booking.fxml"));
+			newScene = new Scene(loader);
+			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	        
+	        window.setScene(newScene);
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
