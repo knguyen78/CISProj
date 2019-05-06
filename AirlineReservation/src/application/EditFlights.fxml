@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditFlightsController">
+   <children>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Flights" />
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <TableView fx:id="flightTable" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="col_flightID" prefWidth="69.0" text="flightID" />
+                <TableColumn fx:id="col_DepCity" prefWidth="133.0" text="Departure City" />
+                  <TableColumn fx:id="col_ArrCity" prefWidth="151.0" text="Arrival City" />
+                  <TableColumn fx:id="col_DepTime" minWidth="6.0" prefWidth="114.0" text="Departure Time" />
+                  <TableColumn fx:id="col_ArrTime" minWidth="0.0" prefWidth="132.0" text="Arrival Time" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
