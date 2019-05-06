@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -68,19 +69,46 @@ public class LoginController {
 			
 	
 	void setAccountView(ActionEvent event) {
-		Parent loader;
+		String un = usern_field.getText();
+		String pw = passw_field.getText();
 		Scene newScene;
+		Connection c;
 		
-        try {
-			loader = FXMLLoader.load(getClass().getResource("AccountInfo.fxml"));
-			newScene = new Scene(loader);
-			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-	        
-	        window.setScene(newScene);
-        } catch (IOException e) {
+		try {
+			c = (Connection) DBConnect.connect();
+			String query = "SELECT * from AirwaysData.registration WHERE username = '"+un+ "'AND pword='"+pw+ "'";
+			Statement st = c.createStatement();
+			
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()){
+				String firstN = rs.getString(2);
+				String lastN = rs.getString(3);
+				String str = rs.getString(5);
+				String ci = rs.getString(4);
+				String state = rs.getString(7);
+				String zipCode = rs.getString(6);
+				String email = rs.getString(10);
+			
+				// load new scene and populate with account information
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountInfo.fxml"));
+				newScene = new Scene(loader.load());
+				Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+				AccountController controller = loader.getController();
+				// set data in the controller
+				controller.setAccountInfo(firstN, lastN, str, ci, state, zipCode, email);
+		        
+		        window.setScene(newScene);
+			}
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 	}
 	
 	

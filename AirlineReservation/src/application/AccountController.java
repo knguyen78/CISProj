@@ -49,12 +49,13 @@ public class AccountController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		fname.setText("Bob");
+/*		fname.setText("Bob");
 		lname.setText("Jones");
 		street.setText("123 Rainbow Road");
 		city.setText("Boston, ");
 		state.setText("MA");
 		zip.setText("12345");
+		*/
 	}
 	@FXML
 	void setMainMenu(ActionEvent event) {
@@ -72,6 +73,16 @@ public class AccountController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	public void setAccountInfo(String firstN, String lastN, String str, String ci, String st, String zipCode, String email) {
+        fname.setText(firstN);
+        lname.setText(lastN);
+        street.setText(str);
+        city.setText(ci+", ");
+        state.setText(st);
+        zip.setText(zipCode);
+        this.email.setText(email);
+    }
 	
 
 }
