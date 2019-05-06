@@ -101,7 +101,7 @@ public class SearchController implements Initializable{
 		
 	}
     
-    void setMainMenu(ActionEvent event) {
+    @FXML void setMainMenu(ActionEvent event) {
 		//returns to main menu
     	Parent loader;
 		Scene newScene;

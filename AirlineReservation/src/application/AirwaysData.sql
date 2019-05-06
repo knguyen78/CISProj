@@ -34,7 +34,7 @@ currentCapacity numeric (3) Not Null,
 primary key (airplaneID)
 );
 create table if not exists bookCheck(
-BookedID Int Not Null,
+BookedID Int Auto_Increment Not Null,
 CustomerID Int Not Null,
 FlightID Int Not Null,
 primary key (BookedID),

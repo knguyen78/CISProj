@@ -2,6 +2,7 @@ package bLogic;
 
 public class Customer {
 	
+	private static int customerID;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -14,7 +15,9 @@ public class Customer {
 	private String securityQuestion;
 	private String securityAnswer;
 	
-	
+	public static int getID() {
+		return customerID;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -82,10 +85,10 @@ public class Customer {
 		this.securityAnswer = securityAnswer;
 	}
 	
-	public Customer(String firstName, String lastName, String address, int zip, String state, 
+	public Customer(int customerID, String firstName, String lastName, String address, int zip, String state, 
 					String username, String password, String email, int ssn, 
 					String securityQuestion, String securityAnswer) {
-		
+		this.customerID = customerID;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
