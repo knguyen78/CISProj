@@ -7,8 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BookController">
    <children>
       <VBox alignment="CENTER" prefHeight="441.0" prefWidth="521.0">
          <children>
@@ -22,7 +21,11 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Button fx:id="MainMenu" mnemonicParsing="false" prefHeight="98.0" prefWidth="165.0" text="Book">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Authenticate" />
+            <TextField fx:id="username" />
+            <TextField fx:id="pword" />
+            <Button fx:id="authenticate" mnemonicParsing="false" onAction="#getLoginInfo" prefHeight="25.0" prefWidth="163.0" text="Authenticate" />
+            <Button fx:id="MainMenu" mnemonicParsing="false" onAction="#book" prefHeight="98.0" prefWidth="165.0" text="Book">
                <font>
                   <Font size="24.0" />
                </font>
