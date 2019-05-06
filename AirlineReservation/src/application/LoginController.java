@@ -58,7 +58,7 @@ public class LoginController {
 		// add if statement if the user and pass is true
 		
 		
-		if (isValid(un)) {
+		if (checkUser(un) && checkPass(pw)) {
 			
 			setAccountView(event);
 		}
@@ -85,7 +85,7 @@ public class LoginController {
 	
 	
 	
-	Boolean isValid(String un) {
+	Boolean checkUser(String un) {
 		
 		boolean checkUser = false;
 		
@@ -111,11 +111,45 @@ public class LoginController {
 		} 
 			catch (SQLException ex) {
 				
-				System.out.println("Error with isValid class");
+				System.out.println("Error with checkUser class");
 			
 			}
 		
 		return checkUser;
+	
+	}
+	
+Boolean checkPass(String pw) {
+		
+		boolean checkPass = false;
+		
+		try {
+			
+			
+			Connection c;
+			c = (Connection) DBConnect.connect();
+			String query = "SELECT * from registration where pword =?"; 
+				
+			PreparedStatement ps = c.prepareStatement(query);
+			ps.setString(1, pw);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				
+				checkPass = true;
+				
+			}
+			
+		
+		} 
+			catch (SQLException ex) {
+				
+				System.out.println("Error with checkPass class");
+			
+			}
+		
+		return checkPass;
 	
 	}
 	
