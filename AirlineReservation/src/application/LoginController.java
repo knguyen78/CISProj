@@ -1,6 +1,10 @@
 package application;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,6 +28,9 @@ public class LoginController {
 	@FXML
     private Button mainMenu_btn;
 	
+	String un = "";
+	String pw = "";
+	
 	@FXML
 	void setMainMenu(ActionEvent event) {
 		Parent loader;
@@ -40,6 +47,7 @@ public class LoginController {
 			e.printStackTrace();
 		}
 	}
+	
 	@FXML
 	void getLoginInfo(ActionEvent event) {
 		String un = usern_field.getText();
@@ -47,9 +55,17 @@ public class LoginController {
 		
 		System.out.println(un+"\n"+pw);
 		
-		setAccountView(event);
+		// add if statement if the user and pass is true
+		
+		
+		if (isValid(un)) {
+			
+			setAccountView(event);
+		}
+
+		
 	}
-	
+			
 	
 	void setAccountView(ActionEvent event) {
 		Parent loader;
@@ -68,5 +84,40 @@ public class LoginController {
 	}
 	
 	
-
+	
+	Boolean isValid(String un) {
+		
+		boolean checkUser = false;
+		
+		try {
+			
+			
+			Connection c;
+			c = (Connection) DBConnect.connect();
+			String query = "SELECT * from registration where username =?"; 
+				
+			PreparedStatement ps = c.prepareStatement(query);
+			ps.setString(1, un);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				
+				checkUser = true;
+				
+			}
+			
+		
+		} 
+			catch (SQLException ex) {
+				
+				System.out.println("Error with isValid class");
+			
+			}
+		
+		return checkUser;
+	
+	}
+	
+		
 }
