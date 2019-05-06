@@ -46,6 +46,8 @@ public class BookController {
     
     boolean authenticate = false;
     
+    int id = 1;
+    
    @FXML void getLoginInfo(ActionEvent event) {
 		String un = username.getText();
 		String pw = pword.getText();
@@ -141,12 +143,15 @@ Boolean checkPass(String pw) {
 			ResultSet rs = st.executeQuery(CID);
 //			String Alter = "ALTER AirwaysData.bookCheck BookedID AUTO_INCREMENT=1,";
 //			Statement s = c.createStatement();
+			
 			while(rs.next()) {
-			String query = "INSERT INTO AirwaysData.bookCheck(BookedID,CustomerID, FlightID) VALUES('1','"+ rs.getString("CustomerID") + "','" + FID + "');";
+			String query = "INSERT INTO AirwaysData.bookCheck(BookedID,CustomerID, FlightID) VALUES(" + 
+			id + ",'"+ rs.getString("CustomerID") + "','" + FID + "');";
 			
 			System.out.println(query);
 			c.createStatement().execute(query);
 			System.out.println("Successful query");
+			id++;
 			//c.close();
 			}
 		} catch (SQLException e) {
