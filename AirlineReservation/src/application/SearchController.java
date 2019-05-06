@@ -57,7 +57,7 @@ public class SearchController implements Initializable{
 
     @FXML
     private TableColumn<Flight, Time> ATimeC;
-
+    
     @FXML
     private Button Book;
 
