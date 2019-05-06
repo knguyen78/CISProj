@@ -51,17 +51,10 @@ public class AdminController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-/*		fname.setText("Bob");
-		lname.setText("Jones");
-		street.setText("123 Rainbow Road");
-		city.setText("Boston, ");
-		state.setText("MA");
-		zip.setText("12345");
-		*/
 	}
 	@FXML
 	void setMainMenu(ActionEvent event) {
+		//controls main menu button
 		Parent loader;
 		Scene newScene;
 		
@@ -79,6 +72,7 @@ public class AdminController implements Initializable {
 	
 	@FXML
 	void setEditFlightScene(ActionEvent event) {
+		//allows admin to edit the flights
 		Parent loader;
 		Scene newScene;
 		System.out.println("Edit Flights button pressed");
@@ -96,7 +90,8 @@ public class AdminController implements Initializable {
 	}
 	
 	public void setAdminInfo(String firstN, String lastN, String str, String ci, String st, String zipCode, String email) {
-        fname.setText(firstN);
+        //Allows Admin to change info
+		fname.setText(firstN);
         lname.setText(lastN);
         street.setText(str);
         city.setText(ci+", ");

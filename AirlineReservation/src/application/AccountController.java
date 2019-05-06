@@ -48,18 +48,11 @@ public class AccountController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		/*fname.setText("Bob");
-		lname.setText("Jones");
-		street.setText("123 Rainbow Road");
-		city.setText("Boston, ");
-		state.setText("MA");
-		zip.setText("12345");
-		*/
 		
 	}
 	@FXML
 	void setMainMenu(ActionEvent event) {
+		//Controls main menu button
 		Parent loader;
 		Scene newScene;
 		
@@ -70,13 +63,13 @@ public class AccountController implements Initializable {
 	        
 	        window.setScene(newScene);
         } catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	public void setAccountInfo(String firstN, String lastN, String str, String ci, String st, String zipCode, String email) {
-        fname.setText(firstN);
+        //Shows Account info at top of screen
+		fname.setText(firstN);
         lname.setText(lastN);
         street.setText(str);
         city.setText(ci+", ");

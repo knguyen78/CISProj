@@ -5,7 +5,8 @@ import javafx.scene.control.Button;
 
 
 public class Controller{
-	
+	//controller for our main screen
+	//has both login and resgister buttons
 	@FXML
     private Button logIn_btn;
 
