@@ -5,9 +5,16 @@ public class Customer {
 	private static int customerID;
 	private String firstName;
 	private String lastName;
-	private String address;
+	private String street;
 	private int zip;
 	private String state;
+	private String city;
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
 	private String username;
 	private String password;
 	private String email;
@@ -16,7 +23,7 @@ public class Customer {
 	private String securityAnswer;
 	
 	public static int getID() {
-		return customerID;
+		return getCustomerID();
 	}
 	public String getFirstName() {
 		return firstName;
@@ -30,11 +37,11 @@ public class Customer {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getAddress() {
-		return address;
+	public String getStreet() {
+		return street;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setStreet(String address) {
+		this.street = address;
 	}
 	public int getZip() {
 		return zip;
@@ -88,10 +95,10 @@ public class Customer {
 	public Customer(int customerID, String firstName, String lastName, String address, int zip, String state, 
 					String username, String password, String email, int ssn, 
 					String securityQuestion, String securityAnswer) {
-		this.customerID = customerID;
+		this.setCustomerID(customerID);
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.address = address;
+		this.street = address;
 		this.email = email;
 		this.password = password;
 		this.securityAnswer = securityAnswer;
@@ -102,6 +109,12 @@ public class Customer {
 		this.zip = zip;
 		
 		
+	}
+	public static int getCustomerID() {
+		return customerID;
+	}
+	public void setCustomerID(int customerID) {
+		Customer.customerID = customerID;
 	}
 
 }

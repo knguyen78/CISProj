@@ -106,12 +106,13 @@ public class EditFlightsController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+		// upon intializing scene/window, will populate tableView of flight from database
 		try {
 			Connection c = DBConnect.connect();
 			
 			ResultSet rs = c.createStatement().executeQuery("SELECT * from AirwaysData.flight");
 			
+			//creates a new flight for each row taken from database flight table
 			while (rs.next()) {
 				flightList.add(new Flight(rs.getInt("flightID"), 
 						rs.getString("departureCity"), rs.getString("arrivalCity"), 
@@ -124,7 +125,7 @@ public class EditFlightsController implements Initializable {
 			e.printStackTrace();
 		}
 		
-
+		// sets the cell values which tells where each item from database is populating
 		col_flightID.setCellValueFactory(new PropertyValueFactory<>("id"));
 		col_DepCity.setCellValueFactory(new PropertyValueFactory<>("depCity"));
 		col_ArrCity.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
@@ -369,6 +370,41 @@ public class EditFlightsController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		    addStatus.setText("no flights deleted, try again");
+		}
+	    
+		refreshTable(event);
+		
+	}
+	
+	@FXML
+	void updateFlight(ActionEvent event) {
+		int flightID = Integer.parseInt(flightID_field.getText());
+		String dCity = depCityUpdate_field.getText();
+	    String aCity = arrCityUpdate_field.getText();
+	    String dTime = depTimeUpdate_field.getText();
+	    String aTime = arrTimeUpdate_field.getText();
+		String depC = null, arrC=null;
+		System.out.println("delete button pressed");
+	    
+		try {
+			Connection c = DBConnect.connect();
+			ResultSet rs = c.createStatement().executeQuery("SELECT * from AirwaysData.flight");
+			while (rs.next()) {
+				depC = rs.getString("departureCity");
+				arrC = rs.getString("arrivalCity");
+				updateStatus.setText("Flight "+flightID+" from "+depC+" to "+arrC+" has been updated!");
+			}
+			String query1 = "UPDATE AirwaysData.flight SET departureCity = '"+dCity+"', arrivalCity = '"+aCity+"', departureTime = '"+dTime+"', arrivalTime = '"+aTime+"' WHERE flightID = "+flightID+";";
+			System.out.println(query1);
+			c.createStatement().execute(query1);
+			System.out.println("Successful query");
+			c.close();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		    addStatus.setText("no flights updated, try again");
 		}
 	    
 		refreshTable(event);

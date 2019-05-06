@@ -123,7 +123,7 @@ public class SearchController implements Initializable{
     	Connection c;
 		try {
 			c = (Connection) DBConnect.connect();
-			String query = "SELECT * from AirwaysData.Flights WHERE arrivalTime Like '" + where + "%'";
+			String query = "SELECT * from AirwaysData.flight WHERE arrivalTime Like '" + where + "%'";
 			Statement st = c.createStatement();
 			
 			ResultSet rs = st.executeQuery(query);

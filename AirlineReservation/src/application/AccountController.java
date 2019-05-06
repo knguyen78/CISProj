@@ -53,6 +53,9 @@ public class AccountController implements Initializable {
 	
     @FXML
     private Button book;
+    
+    @FXML
+    private Button refresh_btn;
 	
 	@FXML
     private TableView<bookCheck> upcomingTable;
@@ -68,6 +71,8 @@ public class AccountController implements Initializable {
 
     ObservableList<bookCheck> bookList = FXCollections.observableArrayList();
 	
+    int custID;
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -89,31 +94,32 @@ public class AccountController implements Initializable {
 		}
 	}
 	
-	@FXML void refresh(ActionEvent event) {
+	@FXML 
+	void refresh(ActionEvent event) {
     	//narrows results by inputed time
     	upcomingTable.getItems().clear();
     	Connection c;
 		try {
 			c = (Connection) DBConnect.connect();
-			String query = "SELECT * from AirwaysData.bookCheck;";
+			String query = "SELECT * from AirwaysData.bookCheck WHERE CustomerID = "+custID+";";
 			Statement st = c.createStatement();
 			
 			ResultSet rs = st.executeQuery(query);
 			while (rs.next()) {
-				bookList.add(new bookCheck(rs.getString("bookedID"), 
-						rs.getString("CustomerID"), rs.getString("FlightID")));
+				bookList.add(new bookCheck(Integer.parseInt(rs.getString("bookedID")), 
+						Integer.parseInt(rs.getString("CustomerID")),Integer.parseInt(rs.getString("FlightID"))));
 			}
-			}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		FID.setCellValueFactory(new PropertyValueFactory<>("id"));
-		DepCityC.setCellValueFactory(new PropertyValueFactory<>("depCity"));
-		ACityC.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
-		DepTimeC.setCellValueFactory(new PropertyValueFactory<>("depTime"));
-		ATimeC.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
-		Table.setItems(flightList);
+		BC.setCellValueFactory(new PropertyValueFactory<>("BID"));
+		CC.setCellValueFactory(new PropertyValueFactory<>("CID"));
+		FC.setCellValueFactory(new PropertyValueFactory<>("FID"));
+		//DepTimeC.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+		//ATimeC.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
+		upcomingTable.setItems(bookList);
+	}
 	
 	@FXML
 	void setSearchScene(ActionEvent event) {
@@ -134,7 +140,7 @@ public class AccountController implements Initializable {
 		}
 	}
 	
-	public void setAccountInfo(String firstN, String lastN, String str, String ci, String st, String zipCode, String email) {
+	public void setAccountInfo(String firstN, String lastN, String str, String ci, String st, String zipCode, String email, int cID) {
         //Shows Account info at top of screen
 		fname.setText(firstN);
         lname.setText(lastN);
@@ -143,6 +149,7 @@ public class AccountController implements Initializable {
         state.setText(st);
         zip.setText(zipCode);
         this.email.setText(email);
+        custID = cID;
     }
 	
 

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import bLogic.Admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,8 @@ public class LoginController {
 	
 	@FXML
     private Button mainMenu_btn;
+	
+	Admin cust;
 	
 	String un = "";
 	String pw = "";
@@ -94,6 +97,7 @@ public class LoginController {
 				String state = rs.getString(7);
 				String zipCode = rs.getString(6);
 				String email = rs.getString(10);
+				int custID = Integer.parseInt(rs.getString(1));
 			
 				// load new scene and populate with account information
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminInfo.fxml"));
@@ -101,8 +105,9 @@ public class LoginController {
 				Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 				AdminController controller = loader.getController();
 				// set data in the controller
-				controller.setAdminInfo(firstN, lastN, str, ci, state, zipCode, email);
+				controller.setAdminInfo(firstN, lastN, str, ci, state, zipCode, email, custID);
 		        
+				
 		        window.setScene(newScene);
 			}
 			
@@ -139,6 +144,7 @@ public class LoginController {
 				String state = rs.getString(7);
 				String zipCode = rs.getString(6);
 				String email = rs.getString(10);
+				int custID = Integer.parseInt(rs.getString(1));
 			
 				// load new scene and populate with account information
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountInfo.fxml"));
@@ -146,7 +152,7 @@ public class LoginController {
 				Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 				AccountController controller = loader.getController();
 				// set data in the controller
-				controller.setAccountInfo(firstN, lastN, str, ci, state, zipCode, email);
+				controller.setAccountInfo(firstN, lastN, str, ci, state, zipCode, email, custID);
 		        
 		        window.setScene(newScene);
 			}

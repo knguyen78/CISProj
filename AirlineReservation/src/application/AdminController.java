@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import bLogic.Admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,6 +47,11 @@ public class AdminController implements Initializable {
 	
 	@FXML
     private TableView<?> upcomingTable;
+	
+
+    private int custID;
+	
+	
 
 	
 	
@@ -89,8 +95,8 @@ public class AdminController implements Initializable {
 		}
 	}
 	
-	public void setAdminInfo(String firstN, String lastN, String str, String ci, String st, String zipCode, String email) {
-        //Allows Admin to change info
+	public void setAdminInfo(String firstN, String lastN, String str, String ci, String st, String zipCode, String email, int cID) {
+        // uses parameters passed from loginController to populate account information when scene is set
 		fname.setText(firstN);
         lname.setText(lastN);
         street.setText(str);
@@ -98,7 +104,10 @@ public class AdminController implements Initializable {
         state.setText(st);
         zip.setText(zipCode);
         this.email.setText(email);
+        custID = cID;
     }
+	
+	
 	
 
 }

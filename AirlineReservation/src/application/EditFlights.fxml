@@ -40,7 +40,7 @@
                   <TableColumn fx:id="col_ArrTime" minWidth="0.0" prefWidth="132.0" text="Arrival Time" />
               </columns>
             </TableView>
-            <Text layoutX="345.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a New Flight" textAlignment="CENTER" wrappingWidth="102.26953125" />
+            <Text layoutX="345.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a New Flight" textAlignment="CENTER" wrappingWidth="160.26953125" />
             <HBox spacing="10.0">
                <children>
                   <TextField fx:id="depCity_field" promptText="Departure City" />
@@ -76,7 +76,7 @@
                   <Button fx:id="deleteFlight_btn" mnemonicParsing="false" onAction="#deleteFlight" text="Delete Flight" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="** use only flight ID to delete" wrappingWidth="221.13671875" />
                   <Text fx:id="updateStatus" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.13671875" />
-                  <Button fx:id="updateFlight_btn" layoutX="685.0" layoutY="10.0" mnemonicParsing="false" text="Update Flight" />
+                  <Button fx:id="updateFlight_btn" layoutX="685.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateFlight" text="Update Flight" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -86,6 +86,9 @@
                <children>
                   <Button fx:id="mainMenu_btn" mnemonicParsing="false" onAction="#setMainMenu" text="Back to Main Menu" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>
