@@ -204,7 +204,7 @@ Boolean checkPass(String pw) {
 			
 			if (rs.next()) {
 				
-				if (rs.getBoolean(un) == true && rs.getBoolean(pw) == true) {
+				if (rs.getBoolean(0) == true) {
 					admin = true;
 				}
 				
