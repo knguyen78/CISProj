@@ -6,6 +6,12 @@ public class bookCheck {
 	private int FID;
 	private int CID;
 	
+	public bookCheck(int bID, int fID, int cID) {
+		super();
+		BID = bID;
+		FID = fID;
+		CID = cID;
+	}
 	public int getBID() {
 		return BID;
 	}
