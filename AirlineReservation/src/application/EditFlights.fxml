@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -12,7 +16,21 @@
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Flights" />
-            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox spacing="10.0">
+               <children>
+                  <TextField fx:id="searchByField" prefHeight="25.0" prefWidth="314.0" promptText="Search by keyword" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin></HBox>
+            <ButtonBar>
+              <buttons>
+                <Button fx:id="depCity_btn" mnemonicParsing="false" onAction="#searchByDepartureCity" prefHeight="25.0" prefWidth="165.0" text="Departure City" />
+                  <Button fx:id="arrCity_btn" mnemonicParsing="false" onAction="#searchByArrivalCity" prefHeight="25.0" text="Arrival City" />
+                  <Button fx:id="deptTime_btn" mnemonicParsing="false" onAction="#searchByDepartureTime" text="Departure Time" />
+                  <Button fx:id="arrTime_btn" mnemonicParsing="false" onAction="#searchByArrivalTime" text="Arrival Time" />
+              </buttons>
+            </ButtonBar>
             <TableView fx:id="flightTable" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn fx:id="col_flightID" prefWidth="69.0" text="flightID" />
@@ -22,6 +40,14 @@
                   <TableColumn fx:id="col_ArrTime" minWidth="0.0" prefWidth="132.0" text="Arrival Time" />
               </columns>
             </TableView>
+            <HBox alignment="TOP_RIGHT" spacing="10.0">
+               <children>
+                  <Button fx:id="mainMenu_btn" mnemonicParsing="false" onAction="#setMainMenu" text="Back to Main Menu" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
          </children>
       </VBox>
    </children>
