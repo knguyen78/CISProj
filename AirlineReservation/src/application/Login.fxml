@@ -44,7 +44,7 @@
       <HBox alignment="CENTER" spacing="10.0">
          <children>
             <Button fx:id="signIn_btn" mnemonicParsing="false" onAction="#getLoginInfo" text="Sign In" />
-            <Button mnemonicParsing="false" text="Forgot Password" />
+            <Button fx:id="forgotPw_btn" mnemonicParsing="false" onAction="#setForgotPwView" text="Forgot Password" />
             <Button fx:id="mainMenu_btn" mnemonicParsing="false" onAction="#setMainMenu" text="Back to Main Menu" />
          </children>
          <VBox.margin>

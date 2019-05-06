@@ -152,6 +152,23 @@ Boolean checkPass(String pw) {
 		return checkPass;
 	
 	}
+
+	@FXML
+	void setForgotPwView(ActionEvent event) {
+		Parent loader;
+		Scene newScene;
+	
+    	try {
+			loader = FXMLLoader.load(getClass().getResource("ForgotPw.fxml"));
+			newScene = new Scene(loader);
+			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        	window.setScene(newScene);
+    	} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 		
 }
