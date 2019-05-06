@@ -57,8 +57,8 @@
             <TableView fx:id="upcomingTable" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn fx:id="BC" prefWidth="75.0" text="Book #" />
-                <TableColumn fx:id="CC" prefWidth="75.0" text="Customer ID" />
-                  <TableColumn fx:id="FC" prefWidth="75.0" text="Flight ID" />
+                <TableColumn fx:id="CC" prefWidth="75.0" text="Flight ID" />
+                  <TableColumn fx:id="FC" prefWidth="75.0" text="Customer ID" />
               </columns>
             </TableView>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="296.0" spacing="10.0">

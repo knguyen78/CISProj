@@ -43,6 +43,9 @@ public class BookController {
     @FXML
     private TextField Authenticate;
     
+    @FXML
+    private Button mainMenu;
+    
     
     boolean authenticate = false;
     
@@ -132,9 +135,11 @@ Boolean checkPass(String pw) {
 	}
     
     @FXML void book(ActionEvent event) {
-    	String SID = BFID.getText();
-    	int FID = Integer.parseInt(SID);
+    	
     	try {
+    		
+    		String SID = BFID.getText();
+        	int FID = Integer.parseInt(SID);
 			Connection c = DBConnect.connect();
 			String CID = "Select CustomerID From registration where username = '" + username.getText() + "';";
 			Statement st = c.createStatement();
@@ -142,7 +147,7 @@ Boolean checkPass(String pw) {
 //			String Alter = "ALTER AirwaysData.bookCheck BookedID AUTO_INCREMENT=1,";
 //			Statement s = c.createStatement();
 			while(rs.next()) {
-			String query = "INSERT INTO AirwaysData.bookCheck(BookedID,CustomerID, FlightID) VALUES('1','"+ rs.getString("CustomerID") + "','" + FID + "');";
+			String query = "INSERT INTO AirwaysData.bookCheck(CustomerID, FlightID) VALUES('"+rs.getString("CustomerID") + "','" + FID + "');";
 			
 			System.out.println(query);
 			c.createStatement().execute(query);
@@ -154,6 +159,7 @@ Boolean checkPass(String pw) {
 			e.printStackTrace();
 		}
     }
+    @FXML
     void setMainMenu(ActionEvent event) {
 		Parent loader;
 		Scene newScene;
