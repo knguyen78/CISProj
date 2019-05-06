@@ -50,6 +50,8 @@ public class SearchController {
 
     @FXML
     private Button DepTime;
+    @FXML
+    private Button ArrTime;
 
     @FXML
     private TableView<Flight> Table;
@@ -117,9 +119,9 @@ public class SearchController {
 			e.printStackTrace();
 		}
 		FlightID.setCellValueFactory(new PropertyValueFactory<>("id"));
-		DepCity.setCellValueFactory(new PropertyValueFactory<>("depCity"));
+		DCity.setCellValueFactory(new PropertyValueFactory<>("depCity"));
 		ACity.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
-		DepTime.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+		Dtime.setCellValueFactory(new PropertyValueFactory<>("depTime"));
 		Atime.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
     }
     @FXML void dCity(ActionEvent event) {
@@ -141,9 +143,9 @@ public class SearchController {
 			e.printStackTrace();
 		}
 		FlightID.setCellValueFactory(new PropertyValueFactory<>("id"));
-		DepCity.setCellValueFactory(new PropertyValueFactory<>("depCity"));
+		DCity.setCellValueFactory(new PropertyValueFactory<>("depCity"));
 		ACity.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
-		DepTime.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+		Dtime.setCellValueFactory(new PropertyValueFactory<>("depTime"));
 		Atime.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
 		
 		Table.setItems(flightList);
@@ -169,9 +171,9 @@ public class SearchController {
 				e.printStackTrace();
 			}
 			FlightID.setCellValueFactory(new PropertyValueFactory<>("id"));
-			DepCity.setCellValueFactory(new PropertyValueFactory<>("depCity"));
+			DCity.setCellValueFactory(new PropertyValueFactory<>("depCity"));
 			ACity.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
-			DepTime.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+			Dtime.setCellValueFactory(new PropertyValueFactory<>("depTime"));
 			Atime.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
 			
 			Table.setItems(flightList);

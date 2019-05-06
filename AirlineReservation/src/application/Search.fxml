@@ -27,6 +27,7 @@
             <Button fx:id="DepCity" mnemonicParsing="false" onAction="#dCity" prefHeight="25.0" prefWidth="126.0" text="Departure City" />
             <Button fx:id="ArCity" mnemonicParsing="false" onAction="#acity" prefHeight="25.0" prefWidth="117.0" text="Arrival City" />
             <Button fx:id="DepTime" mnemonicParsing="false" onAction="#dTime" prefHeight="25.0" prefWidth="145.0" text="Departure Time" />
+            <Button fx:id="ArrTime" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Arrival Time" />
          </children>
       </HBox>
       <TableView fx:id="Table" prefHeight="190.0" prefWidth="600.0">
