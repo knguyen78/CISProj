@@ -61,7 +61,14 @@ public class LoginController {
 		
 		if (checkUser(un) && checkPass(pw)) {
 			
-			setAccountView(event);
+			if(checkAdmin(un,pw)) {
+			//	setAdminAccountView(event);
+				
+			} else {
+				
+				setAccountView(event);
+			}
+			
 		}
 
 		
@@ -178,6 +185,39 @@ Boolean checkPass(String pw) {
 			}
 		
 		return checkPass;
+	
+	}
+
+	Boolean checkAdmin(String un, String pw) {
+		
+		boolean admin = false;
+		
+		try {
+			
+			Connection c;
+			c = (Connection) DBConnect.connect();
+			String query = "SELECT isAdmin from AirwaysData.registration WHERE username = '"+un+ "'AND pword='"+pw+ "'";
+			
+			Statement st = c.createStatement();
+			
+			ResultSet rs = st.executeQuery(query);
+			
+			if (rs.next()) {
+				
+				if (rs.getBoolean(un) == true && rs.getBoolean(pw) == true) {
+					admin = true;
+				}
+				
+			}
+			
+		} 
+		
+		catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+				
+		return admin;
 	
 	}
 
