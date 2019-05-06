@@ -5,6 +5,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import bLogic.Admin;
+import bLogic.bookCheck;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,7 +49,21 @@ public class AdminController implements Initializable {
     private Button editFlights_btn;
 	
 	@FXML
-    private TableView<?> upcomingTable;
+    private Button refresh_btn;
+	
+	@FXML
+    private TableView<bookCheck> upcomingTable;
+    
+    @FXML
+    private TableColumn<bookCheck, String> BC;
+
+    @FXML
+    private TableColumn<bookCheck, String> CC;
+
+    @FXML
+    private TableColumn<bookCheck, String> FC;
+
+    ObservableList<bookCheck> bookList = FXCollections.observableArrayList();
 	
 
     private int custID;
