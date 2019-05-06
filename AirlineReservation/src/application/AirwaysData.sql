@@ -36,7 +36,10 @@ primary key (airplaneID)
 create table if not exists bookCheck(
 BookedID Int Not Null,
 CustomerID Int Not Null,
-FlightID Int Not Null
+FlightID Int Not Null,
+primary key (BookedID),
+foreign key (CustomerID) references registration(CustomerID),
+foreign key (FlightID) references flight(flightID)
 );
 
 
@@ -63,7 +66,7 @@ Values
 ('Paris', 'New York','8:30:00','11:30:00', 1),
 ('Atlanta', 'Los Angelos','8:30:00','11:30:00', 1);
 
-Insert into registration(firstname, lastname,city, address, zip, state, username, pword, 
+Insert into registration(firstname, lastname, city, address, zip, state, username, pword, 
 email, SSN, securityQuestion, securityAnswer, isAdmin)
 Values
 ('Charles', 'Money','Atlanta', '141 Piedmont AV', '30080','GA','cmoney',
