@@ -56,16 +56,15 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming Flights" />
             <TableView fx:id="upcomingTable" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="BC" prefWidth="75.0" text="Book #" />
+                <TableColumn fx:id="CC" prefWidth="75.0" text="Customer ID" />
+                  <TableColumn fx:id="FC" prefWidth="75.0" text="Flight ID" />
               </columns>
             </TableView>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="296.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="164.0" text="Log Out and Exit" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="81.0" />
                   <Button fx:id="editFlights_btn" layoutX="390.0" layoutY="28.0" mnemonicParsing="false" onAction="#setEditFlightScene" text="Edit Flights" />
-                  <Button mnemonicParsing="false" text="Search Flights" />
                   <Button fx:id="mainMenu_btn" mnemonicParsing="false" onAction="#setMainMenu" text="Back to Main Menu" />
                </children>
                <padding>

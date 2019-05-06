@@ -1,6 +1,6 @@
 package bLogic;
 
-public class book {
+public class bookCheck {
 
 	private int BID;
 	private int FID;

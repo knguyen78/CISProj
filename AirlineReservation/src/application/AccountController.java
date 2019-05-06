@@ -2,8 +2,17 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Connection;
+
+import bLogic.Flight;
+import bLogic.bookCheck;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -45,9 +55,18 @@ public class AccountController implements Initializable {
     private Button book;
 	
 	@FXML
-    private TableView<?> upcomingTable;
+    private TableView<bookCheck> upcomingTable;
+    
+    @FXML
+    private TableColumn<bookCheck, String> BC;
 
-	
+    @FXML
+    private TableColumn<bookCheck, String> CC;
+
+    @FXML
+    private TableColumn<bookCheck, String> FC;
+
+    ObservableList<bookCheck> bookList = FXCollections.observableArrayList();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -69,6 +88,33 @@ public class AccountController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML void refresh(ActionEvent event) {
+    	//narrows results by inputed time
+    	upcomingTable.getItems().clear();
+    	Connection c;
+		try {
+			c = (Connection) DBConnect.connect();
+			String query = "SELECT * from AirwaysData.bookCheck;";
+			Statement st = c.createStatement();
+			
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				bookList.add(new bookCheck(rs.getString("bookedID"), 
+						rs.getString("CustomerID"), rs.getString("FlightID")));
+			}
+			}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FID.setCellValueFactory(new PropertyValueFactory<>("id"));
+		DepCityC.setCellValueFactory(new PropertyValueFactory<>("depCity"));
+		ACityC.setCellValueFactory(new PropertyValueFactory<>("arrCity"));
+		DepTimeC.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+		ATimeC.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
+		Table.setItems(flightList);
+	
 	@FXML
 	void setSearchScene(ActionEvent event) {
 		//allows user to view flights
