@@ -2,6 +2,10 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import bLogic.Admin;
@@ -16,6 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -123,6 +128,33 @@ public class AdminController implements Initializable {
         this.email.setText(email);
         custID = cID;
     }
+	
+	@FXML 
+	void refresh(ActionEvent event) {
+    	//narrows results by inputed time
+    	upcomingTable.getItems().clear();
+    	Connection c;
+		try {
+			c = (Connection) DBConnect.connect();
+			String query = "SELECT * from AirwaysData.bookCheck WHERE CustomerID = "+custID+";";
+			Statement st = c.createStatement();
+			
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				bookList.add(new bookCheck(Integer.parseInt(rs.getString("bookedID")), 
+						Integer.parseInt(rs.getString("CustomerID")),Integer.parseInt(rs.getString("FlightID"))));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		BC.setCellValueFactory(new PropertyValueFactory<>("BID"));
+		CC.setCellValueFactory(new PropertyValueFactory<>("CID"));
+		FC.setCellValueFactory(new PropertyValueFactory<>("FID"));
+		//DepTimeC.setCellValueFactory(new PropertyValueFactory<>("depTime"));
+		//ATimeC.setCellValueFactory(new PropertyValueFactory<>("arrTime"));
+		upcomingTable.setItems(bookList);
+	}
 	
 	
 	

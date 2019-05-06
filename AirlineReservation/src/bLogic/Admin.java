@@ -27,7 +27,6 @@ public class Admin extends Customer {
 	}
 
 
-	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
 		return super.getID();
@@ -188,7 +187,6 @@ public class Admin extends Customer {
 	}
 
 
-	@Override
 	public int getCustomerID() {
 		// TODO Auto-generated method stub
 		return super.getCustomerID();

@@ -22,7 +22,7 @@ public class Customer {
 	private String securityQuestion;
 	private String securityAnswer;
 	
-	public static int getID() {
+	public int getID() {
 		return getCustomerID();
 	}
 	public String getFirstName() {
@@ -110,7 +110,7 @@ public class Customer {
 		
 		
 	}
-	public static int getCustomerID() {
+	public int getCustomerID() {
 		return customerID;
 	}
 	public void setCustomerID(int customerID) {
