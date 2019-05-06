@@ -62,7 +62,7 @@ public class LoginController {
 		if (checkUser(un) && checkPass(pw)) {
 			
 			if(checkAdmin(un,pw)) {
-			//	setAdminAccountView(event);
+			setAdminView(event);
 				
 			} else {
 				
@@ -74,7 +74,51 @@ public class LoginController {
 		
 	}
 			
+	void setAdminView(ActionEvent event) {
+		String un = usern_field.getText();
+		String pw = passw_field.getText();
+		Scene newScene;
+		Connection c;
+		
+		try {
+			c = (Connection) DBConnect.connect();
+			String query = "SELECT * from AirwaysData.registration WHERE username = '"+un+ "'AND pword='"+pw+ "'";
+			Statement st = c.createStatement();
+			
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()){
+				String firstN = rs.getString(2);
+				String lastN = rs.getString(3);
+				String str = rs.getString(5);
+				String ci = rs.getString(4);
+				String state = rs.getString(7);
+				String zipCode = rs.getString(6);
+				String email = rs.getString(10);
+			
+				// load new scene and populate with account information
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminInfo.fxml"));
+				newScene = new Scene(loader.load());
+				Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+				AdminController controller = loader.getController();
+				// set data in the controller
+				controller.setAdminInfo(firstN, lastN, str, ci, state, zipCode, email);
+		        
+		        window.setScene(newScene);
+			}
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
+
+
 	void setAccountView(ActionEvent event) {
 		String un = usern_field.getText();
 		String pw = passw_field.getText();
@@ -204,7 +248,7 @@ Boolean checkPass(String pw) {
 			
 			if (rs.next()) {
 				
-				if (rs.getBoolean(0) == true) {
+				if (rs.getBoolean("isAdmin")) {
 					admin = true;
 				}
 				
