@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditFlightsController">
+<AnchorPane prefHeight="553.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditFlightsController">
    <children>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="773.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Flights" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Flights Page" textAlignment="CENTER" />
             <HBox spacing="10.0">
                <children>
                   <TextField fx:id="searchByField" prefHeight="25.0" prefWidth="314.0" promptText="Search by keyword" />
@@ -33,20 +33,59 @@
             </ButtonBar>
             <TableView fx:id="flightTable" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn fx:id="col_flightID" prefWidth="69.0" text="flightID" />
+                <TableColumn fx:id="col_flightID" prefWidth="69.0" text="Flight ID" />
                 <TableColumn fx:id="col_DepCity" prefWidth="133.0" text="Departure City" />
                   <TableColumn fx:id="col_ArrCity" prefWidth="151.0" text="Arrival City" />
                   <TableColumn fx:id="col_DepTime" minWidth="6.0" prefWidth="114.0" text="Departure Time" />
                   <TableColumn fx:id="col_ArrTime" minWidth="0.0" prefWidth="132.0" text="Arrival Time" />
               </columns>
             </TableView>
-            <HBox alignment="TOP_RIGHT" spacing="10.0">
+            <Text layoutX="345.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a New Flight" textAlignment="CENTER" wrappingWidth="102.26953125" />
+            <HBox spacing="10.0">
                <children>
-                  <Button fx:id="mainMenu_btn" mnemonicParsing="false" onAction="#setMainMenu" text="Back to Main Menu" />
+                  <TextField fx:id="depCity_field" promptText="Departure City" />
+                  <TextField fx:id="arrCity_field" promptText="Arrival City" />
+                  <TextField fx:id="depTime_field" promptText="Departure Time" />
+                  <TextField fx:id="arrTime_field" promptText="Arrival Time" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_RIGHT">
+               <children>
+                  <Text fx:id="addStatus" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="202.13671875" />
+                  <Button fx:id="addFlight_btn" mnemonicParsing="false" onAction="#addNewFlight" text="Add Flight" />
+               </children>
+            </HBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Update/Delete Flight" textAlignment="CENTER" wrappingWidth="153.26953125" />
+            <HBox spacing="10.0">
+               <children>
+                  <TextField fx:id="flightID_field" promptText="Flight ID" />
+                  <TextField fx:id="depCityUpdate_field" layoutX="10.0" layoutY="10.0" promptText="Departure City" />
+                  <TextField fx:id="arrCityUpdate_field" promptText="Arrival City" />
+                  <TextField fx:id="depTimeUpdate_field" promptText="Departure Time" />
+                  <TextField fx:id="arrTimeUpdate_field" promptText="Arrival Time" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="309.0" prefHeight="44.0" prefWidth="773.0" spacing="10.0">
+               <children>
+                  <Button fx:id="deleteFlight_btn" mnemonicParsing="false" onAction="#deleteFlight" text="Delete Flight" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="** use only flight ID to delete" wrappingWidth="221.13671875" />
+                  <Text fx:id="updateStatus" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.13671875" />
+                  <Button fx:id="updateFlight_btn" layoutX="685.0" layoutY="10.0" mnemonicParsing="false" text="Update Flight" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" spacing="10.0">
+               <children>
+                  <Button fx:id="mainMenu_btn" mnemonicParsing="false" onAction="#setMainMenu" text="Back to Main Menu" />
+               </children>
             </HBox>
          </children>
       </VBox>
