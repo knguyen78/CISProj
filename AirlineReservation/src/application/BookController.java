@@ -43,10 +43,11 @@ public class BookController {
     @FXML
     private TextField Authenticate;
     
+    @FXML
+    private Button mainMenu;
+    
     
     boolean authenticate = false;
-    
-    int id = 1;
     
    @FXML void getLoginInfo(ActionEvent event) {
 		String un = username.getText();
@@ -134,24 +135,23 @@ Boolean checkPass(String pw) {
 	}
     
     @FXML void book(ActionEvent event) {
-    	String SID = BFID.getText();
-    	int FID = Integer.parseInt(SID);
+    	
     	try {
+    		
+    		String SID = BFID.getText();
+        	int FID = Integer.parseInt(SID);
 			Connection c = DBConnect.connect();
 			String CID = "Select CustomerID From registration where username = '" + username.getText() + "';";
 			Statement st = c.createStatement();
 			ResultSet rs = st.executeQuery(CID);
 //			String Alter = "ALTER AirwaysData.bookCheck BookedID AUTO_INCREMENT=1,";
 //			Statement s = c.createStatement();
-			
 			while(rs.next()) {
-			String query = "INSERT INTO AirwaysData.bookCheck(BookedID,CustomerID, FlightID) VALUES(" + 
-			id + ",'"+ rs.getString("CustomerID") + "','" + FID + "');";
+			String query = "INSERT INTO AirwaysData.bookCheck(CustomerID, FlightID) VALUES('"+rs.getString("CustomerID") + "','" + FID + "');";
 			
 			System.out.println(query);
 			c.createStatement().execute(query);
 			System.out.println("Successful query");
-			id++;
 			//c.close();
 			}
 		} catch (SQLException e) {
@@ -159,6 +159,7 @@ Boolean checkPass(String pw) {
 			e.printStackTrace();
 		}
     }
+    @FXML
     void setMainMenu(ActionEvent event) {
 		Parent loader;
 		Scene newScene;
